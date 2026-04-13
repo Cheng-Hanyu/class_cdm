@@ -1,0 +1,23 @@
+# Compiled CLASS binary and libraries
+class
+libclass.a
+*.o
+*.d
+
+# Python wrapper build artifacts
+build/
+*.so
+*.egg-info/
+dist/
+python/classy.egg-info/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# CLASS run outputs
+output/
+
+# macOS
+.DS_Store
