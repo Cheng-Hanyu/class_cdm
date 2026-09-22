@@ -3,26 +3,36 @@
 This modified version of [CLASS](https://github.com/lesgourg/class_public/tree/v3.2.3)
 (v3.2.3) introduces a CDM equation of state that is zero before a transition
 scale factor and varies linearly afterwards. With the present scale factor
-normalized to $a=1$,
+normalized to $a=1$, the equation of state is as follows.
+
+Before the transition, $a\lt a_{\mathrm{nz}}$:
 
 ```math
-w_{\mathrm{cdm}}(a)=
-\begin{cases}
-0, & a<a_{\mathrm{nz}},\\
-w_{\mathrm{dm},0}\dfrac{a-a_{\mathrm{nz}}}{1-a_{\mathrm{nz}}}, & a\geq a_{\mathrm{nz}}.
-\end{cases}
+w_{\mathrm{cdm}}(a)=0.
 ```
 
-The background density implemented in the code is
+At and after the transition, $a\geq a_{\mathrm{nz}}$:
+
+```math
+w_{\mathrm{cdm}}(a)=w_{\mathrm{dm},0}\dfrac{a-a_{\mathrm{nz}}}{1-a_{\mathrm{nz}}}.
+```
+
+The background density implemented in the code is as follows.
+
+Before the transition, $a\lt a_{\mathrm{nz}}$:
 
 ```math
 \frac{\rho_{\mathrm{cdm}}(a)}{\rho_{\mathrm{cdm},0}}=
-a^{-3}\begin{cases}
-\exp\!\left[\dfrac{3w_{\mathrm{dm},0}}{1-a_{\mathrm{nz}}}
-\left(1-a_{\mathrm{nz}}+a_{\mathrm{nz}}\ln a_{\mathrm{nz}}\right)\right], & a<a_{\mathrm{nz}},\\
-\exp\!\left[\dfrac{3w_{\mathrm{dm},0}}{1-a_{\mathrm{nz}}}
-\left(1-a+a_{\mathrm{nz}}\ln a\right)\right], & a\geq a_{\mathrm{nz}}.
-\end{cases}
+a^{-3}\exp\!\left[\dfrac{3w_{\mathrm{dm},0}}{1-a_{\mathrm{nz}}}
+\left(1-a_{\mathrm{nz}}+a_{\mathrm{nz}}\ln a_{\mathrm{nz}}\right)\right].
+```
+
+At and after the transition, $a\geq a_{\mathrm{nz}}$:
+
+```math
+\frac{\rho_{\mathrm{cdm}}(a)}{\rho_{\mathrm{cdm},0}}=
+a^{-3}\exp\!\left[\dfrac{3w_{\mathrm{dm},0}}{1-a_{\mathrm{nz}}}
+\left(1-a+a_{\mathrm{nz}}\ln a\right)\right].
 ```
 
 The density is normalized at $a=1$ and continuous at the transition.
